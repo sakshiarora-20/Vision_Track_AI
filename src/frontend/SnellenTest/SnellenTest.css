@@ -1,0 +1,76 @@
+.snellen-container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+h2 {
+  color: #333;
+  font-size: 24px;
+}
+
+p {
+  color: #555;
+  font-size: 16px;
+}
+
+.test-area {
+  margin-top: 20px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.snellen-letter {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #111;
+  margin: 20px 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.result {
+  margin-top: 30px;
+  padding: 20px;
+  background: #e3f2fd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.result h3 {
+  color: #007bff;
+  font-size: 20px;
+}
+
+.result p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
