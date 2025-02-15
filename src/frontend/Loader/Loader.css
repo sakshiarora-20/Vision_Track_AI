@@ -1,89 +1,59 @@
-/* Center Black Line */
-.black-line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: black;
-}
-
-/* Logo Animation */
-.logo {
-    width: 8rem;
-    /* Adjust based on your logo size */
-    position: absolute;
-}
-
-/* Tagline Styling */
-.tagline {
-    position: absolute;
-    bottom: 5rem;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: black;
-    opacity: 0;
-    /* Initially hidden */
-    animation: fadeIn 1s ease-in-out 2.2s forwards;
-}
-
-/* Snellen Image Container */
-.snellen-container {
+/* Full-screen centered layout */
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color:#fff;
+  }
+  
+  /* Centering container */
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out 3s forwards;
-}
-
-/* Snellen Test Image */
-.snellen-image {
-    width: 15rem;
-}
-
-/* Test Message */
-.test-message {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: black;
-    margin-top: 1rem;
-    text-align: center;
-}
-
-/* Buttons */
-.button-container {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
-}
-
-.test-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    justify-content: center;
+    position: relative;
+  }
+  
+  /* Eye logo animation */
+  .eye-logo {
+    width: 200px;
+    height: auto;
+    animation: rotateEye 3s ease-in-out forwards;
+  }
+  
+  /* Hashtag appearance */
+  .hashtag {
+    font-size: 2rem;
     font-weight: bold;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.test-button.blue {
-    background-color: #007bff;
-}
-
-.test-button.green {
-    background-color: #28a745;
-}
-
-/* Fade-In Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+    color:rgb(39, 39, 82);
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+    animation-delay: 3s;
+    margin-top: 20px;
+  }
+  
+  /* Eye rotation effect */
+  @keyframes rotateEye {
+    0% {
+      transform: rotate(0deg) translateY(-200px);
+      opacity: 0;
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    100% {
+      transform: rotate(360deg) translateY(0);
+      opacity: 1;
     }
-}
+  }
+  
+  /* Hashtag fade-in effect */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
