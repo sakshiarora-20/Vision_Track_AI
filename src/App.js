@@ -1,10 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Home from "../src/frontend/Home/Home";
 import SnellenTest from "./frontend/SnellenTest/SnellenTest";
 import Loader from "./frontend/Loader/Loader";
 import SnellenLoader from "./frontend/SnellLoader/SnellenLoader";
-
 
 function App() {
   return (
