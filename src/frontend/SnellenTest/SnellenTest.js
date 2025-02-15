@@ -1,51 +1,147 @@
 import React, { useState } from "react";
-import "../../frontend/SnellenTest/SnellenTest.css";
+import axios from "axios";
+// const CORS = require("cors");
 
-const letters = ["E", "F P", "T O Z", "L P E D", "P E C F D", "E D F C Z P"];
-const fontSizes = [40, 32, 24, 20, 16, 12];
+// CORS(app, resources = { r"/*": { "origins": "*" } })
 
-const SnellenTest = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [responses, setResponses] = useState([]);
-  const [testComplete, setTestComplete] = useState(false);
 
-  const handleResponse = (canRead) => {
-    setResponses([...responses, canRead]);
-    if (currentStep < letters.length - 1) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      setTestComplete(true);
-    }
-  };
+function App() {
+    const [formData, setFormData] = useState({
+        age: "",
+        gender: "",
+        snellen_left: "",
+        snellen_right: "",
+        last_clear_left: "",
+        last_clear_right: "",
+        headaches: "",
+        blurry_vision: "",
+        eye_strain: "",
+        distance_issue: "",
+        near_issue: "",
+        light_sensitivity: "",
+        low_light_difficulty: "",
+    });
 
-  const getResult = () => {
-    const passedLevels = responses.filter((r) => r).length;
-    if (passedLevels >= 5) return "Your distance vision is good!";
-    if (passedLevels >= 3) return "You may have mild vision issues. Consider an eye test.";
-    return "You may need glasses. Consult an eye specialist.";
-  };
+    const [prediction, setPrediction] = useState(null);
 
-  return (
-    <div className="snellen-container">
-      <h2>Snellen Eye Test</h2>
-      <p>Stand 10 feet (3 meters) away from your screen. Read the letters below and select whether you can see them clearly.</p>
-      
-      {!testComplete ? (
-        <div className="test-area">
-          <p className="snellen-letter" style={{ fontSize: fontSizes[currentStep] }}>{letters[currentStep]}</p>
-          <div className="buttons">
-            <button onClick={() => handleResponse(true)}>I Can Read</button>
-            <button onClick={() => handleResponse(false)}>I Can't Read</button>
-          </div>
+    // Handle form changes
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    // Send data to Flask API
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("http://127.0.0.1:5000/predict", formData);
+            console.log("API Response:", response.data); // ✅ Log the response
+            setPrediction(response.data);
+        } catch (error) {
+            console.error("Error fetching prediction:", error);
+        }
+    };
+
+    return (
+        <div style={{ maxWidth: "500px", margin: "auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+            <h2>Eye Prescription Predictor</h2>
+            <form onSubmit={handleSubmit}>
+                <label>Age:</label>
+                <input type="number" name="age" value={formData.age} onChange={handleChange} required /><br />
+
+                <label>Gender:</label>
+                <select name="gender" value={formData.gender} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select><br />
+
+                <label>Snellen Score Left Eye:</label>
+                <input type="text" name="snellen_left" value={formData.snellen_left} onChange={handleChange} required /><br />
+
+                <label>Snellen Score Right Eye:</label>
+                <input type="text" name="snellen_right" value={formData.snellen_right} onChange={handleChange} required /><br />
+
+                <label>Did you see the last line clearly for Left Eye?</label>
+                <select name="last_clear_left" value={formData.last_clear_left} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <label>Did you see the last line clearly for Right Eye?</label>
+                <select name="last_clear_right" value={formData.last_clear_right} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <label>Do you have headaches?</label>
+                <select name="headaches" value={formData.headaches} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <label>Do you have blurry vision?</label>
+                <select name="blurry_vision" value={formData.blurry_vision} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <label>Do you have eye strain?</label>
+                <select name="eye_strain" value={formData.eye_strain} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <label>Do you have distance vision issues?</label>
+                <select name="distance_issue" value={formData.distance_issue} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <label>Do you have near vision issues?</label>
+                <select name="near_issue" value={formData.near_issue} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <label>Are you sensitive to light?</label>
+                <select name="light_sensitivity" value={formData.light_sensitivity} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <label>Do you have difficulty seeing in low light?</label>
+                <select name="low_light_difficulty" value={formData.low_light_difficulty} onChange={handleChange} required>
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br />
+
+                <button type="submit">Get Prediction</button>
+            </form>
+
+            {prediction && (
+                <div style={{ marginTop: "20px", padding: "10px", border: "1px solid black" }}>
+                    <h3>🔍 Predicted Eye Prescription:</h3>
+                    <p>SPH Left: {prediction["SPH Left"]}</p>
+                    <p>SPH Right: {prediction["SPH Right"]}</p>
+                    <p>CYL Left: {prediction["CYL Left"]}</p>
+                    <p>CYL Right: {prediction["CYL Right"]}</p>
+                    <p>Axis Left: {prediction["Axis Left"]}</p>
+                    <p>Axis Right: {prediction["Axis Right"]}</p>
+                    <p>🕶 Recommended Lens Type: {prediction["Recommended Lens Type"]}</p>
+                </div>
+            )}
         </div>
-      ) : (
-        <div className="result">
-          <h3>Test Result:</h3>
-          <p>{getResult()}</p>
-        </div>
-      )}
-    </div>
-  );
-};
+    );
+}
 
-export default SnellenTest;
+export default App;

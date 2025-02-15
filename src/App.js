@@ -1,15 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Home from "./frontend/Home";
 import SnellenTest from "./frontend/SnellenTest/SnellenTest";
-import LoadBalancer from "./frontend/Loader/Loader";
+// import LoadBalancer from "./frontend/Loader/Loader";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<LoadBalancer />} />
-          <Route path="/snellen-test" element={<SnellenTest />} />
+          <Route path="/" element={<SnellenTest />} />
+          {/* <Route path="/" element={<LoadBalancer />} />
+          <Route path="/snellen-test" element={<SnellenTest />} /> */}
         </Routes>
       </div>
     </Router>
