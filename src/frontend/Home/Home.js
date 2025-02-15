@@ -54,10 +54,6 @@ export default function Home() {
       {!startAnimation ? (
         <div className="content">
           <h1>Struggling with Headaches? It Might Be Your Vision!</h1>
-          <p>
-            Blurry vision and uncorrected eye power can lead to discomfort and
-            headaches. Take our quick vision test and get personalized insights!
-          </p>
           <button className="action-button" onClick={handleClick}>
             Check Your Eye Power
           </button>
