@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import  "../ContrastTest/Constrastest.css";
 const contrastLevels = ["100%", "75%", "50%", "25%", "13%", "8%", "7%", "6%"];
 const letters = ["S", "D", "Z", "C", "V", "R", "O", "K", "D", "N", "C", "Z", "N", "K", "O", "Z", "V", "N", "K", "S", "H", "C", "N"];
 
