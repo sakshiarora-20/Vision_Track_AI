@@ -54,7 +54,7 @@ const ContrastTest = () => {
     };
 
     return (
-        <div style={{ backgroundColor: "lightgrey", minHeight: "100vh", padding: "20px" }}>
+        <div style={{ backgroundColor: "lightgrey", padding: "20px" }}>
             <h2>Contrast Sensitivity Test</h2>
 
             {/* Brightness Slider */}
@@ -75,8 +75,8 @@ const ContrastTest = () => {
                 <div>
                     <p>Can you see the letters at {contrastLevels[currentIndex]} contrast?</p>
                     <h1 style={{ opacity: parseFloat(contrastLevels[currentIndex]) / 100 }}>{letters[currentIndex]}</h1>
-                    <button onClick={() => handleResponse(true)}>Yes</button>
-                    <button onClick={() => handleResponse(false)}>No</button>
+                    <button className="btn-y" onClick={() => handleResponse(true)}>Yes</button>
+                    <button className="btn-y" onClick={() => handleResponse(false)}>No</button>
                 </div>
             ) : (
                 <div>
