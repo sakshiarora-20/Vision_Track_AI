@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Loader />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/snellLoader" element={<SnellenLoader />} />
+          {/* <Route path="/snellLoader" element={<SnellenLoader />} /> */}
           <Route path="/snellen-test" element={<SnellenTest />} />
           <Route path="/contrast" element={<ContrastTest />} />
 
