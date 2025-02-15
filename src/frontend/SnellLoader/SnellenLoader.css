@@ -1,0 +1,99 @@
+/* Full-screen layout */
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000;
+  }
+  
+  /* Container */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+  
+  /* Rotating Image - Comes from Right */
+  .rotating-image {
+    width: 150px;
+    position: absolute;
+    right: -150px;
+    opacity: 0;
+    animation: moveInRight 2s ease-in-out forwards, rotate 2s linear forwards;
+  }
+  
+  /* Message Appearance */
+  .message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  /* Buttons Container */
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 15px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  /* Individual Buttons */
+  .action-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: cyan;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, background-color 0.3s;
+  }
+  
+  .action-button:hover {
+    background-color: white;
+    transform: scale(1.1);
+  }
+  
+  /* Animations */
+  @keyframes moveInRight {
+    0% {
+      right: -150px;
+      opacity: 0;
+    }
+    100% {
+      right: 50%;
+      transform: translateX(50%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
