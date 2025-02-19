@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import  "../ContrastTest/Constrastest.css";
+import "../ContrastTest/Constrastest.css";
+import { useNavigate } from "react-router-dom";
+
 const contrastLevels = ["100%", "75%", "50%", "25%", "13%", "8%", "7%", "6%"];
 const letters = ["S", "D", "Z", "C", "V", "R", "O", "K", "D", "N", "C", "Z", "N", "K", "O", "Z", "V", "N", "K", "S", "H", "C", "N"];
 
@@ -10,6 +12,7 @@ const ContrastTest = () => {
     const [brightness, setBrightness] = useState(100); // Default brightness
     const [impairmentCategory, setImpairmentCategory] = useState("");
 
+    const navigate = useNavigate();
     useEffect(() => {
         document.body.style.filter = `brightness(${brightness}%)`;
     }, [brightness]);
@@ -85,6 +88,10 @@ const ContrastTest = () => {
                     <p><strong>Your Contrast Sensitivity Level:</strong> {impairmentCategory}</p>
                 </div>
             )}
+            <div>
+                <button onClick={() => setCurrentIndex(0)}>Restart Test</button>
+                <button onClick={() => navigate("/snellen-test")}>Move to Snellen Test</button>
+            </div>
         </div>
     );
 };

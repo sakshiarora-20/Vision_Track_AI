@@ -8,8 +8,8 @@ export default function EyeAnimation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => setShowHashtag(true),2000); // Show hashtag after 3s
-    setTimeout(() => navigate("/home"), 6000); // Redirect after 1 min
+    setTimeout(() => setShowHashtag(true), 1000); // Show hashtag after 3s
+    setTimeout(() => navigate("/home"), 8000); // Redirect after 1 min
   }, [navigate]);
 
   return (
